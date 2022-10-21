@@ -81,7 +81,9 @@ git branch -D_branchname -->delete a branch definitly
 git checkout -b branch_name -->create and go to an new branch
 git merge other_branch -->merge other branch to present branch
 \end{verbatim}
-
+\begin{center}
+\includegraphics[scale=0.6]{gitmerge}
+\end{center}
 \subsection{Download from github repository}
 
 \begin{verbatim}
@@ -89,6 +91,13 @@ git remote -v -->to see what relation is there from your PC and github repositor
 git fetch 
 git diff repository_name/branch_name
 git pull 
+
+or just
+
+git status
+git diff
+git pull
+
 \end{verbatim}
 
 \textbf{\textit{The pull command only download what changed in repository, and will not cover what file or content you have added in your directory. }}
@@ -121,6 +130,10 @@ mv this.file this.folder --> move a file to a folder,
 clear --> clean the screen
 \end{verbatim}
 
+\section{Difference between HEAD and main}
+"When working with Git, only one branch can be checked out at a time - and this is what's called the "HEAD" branch. Often, this is also referred to as the "active" or "current" branch."
+
+The main/master is what brach a git will at first create, and it is the main space to store your working. 
 
 
 \section{Reference}
@@ -133,6 +146,10 @@ https://www.bilibili.com/video/BV1r3411F7kn/
 
 English
 https://www.atlassian.com/git/glossary 
+
+https://www.git-tower.com/learn/git/glossary/head 
+
+
 \end{verbatim}
 
 \end{document}
