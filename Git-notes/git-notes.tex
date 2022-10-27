@@ -135,9 +135,28 @@ clear --> clean the screen
 
 The main/master is what brach a git will at first create, and it is the main space to store your working. 
 
+\section{Beside Git: How to set and run pre-commit document}
+pre-commit files are git hook files, which could help you find and correct issues in your file while you are commit (-ing), any \verb|pre-commit.yml| file needs a \verb|environment.yml| file to state the environment. 
+
+You can follow this command order (which need you have already installed Anaconda or other conda):
+
+\begin{enumerate}
+\item open Windows Powershell and run \verb|conda env create -f environment.yml|
+\item open conda powershell or conda prompt, and run \verb|conda activate myenv|, myenv is the name of environment, you can find it in your \verb|environment.yml| file
+\item still in your conda shell, run \verb| pre-commit install| then \verb|pre-commit run|
+\end{enumerate}
+
+Remember that each time you use pre-commit hook, you need to run \verb|conda activate myenv|, \verb| pre-commit install| and \verb|pre-commit run| . 
+
+In addition, to check all environments you installed, you can check by Anaconda Navigator or by run \verb|conda info --envs| in any shell. 
+
+
+
 
 \section{Reference}
+
 \begin{verbatim}
+
 Chinese Only
 https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ 
 
@@ -149,6 +168,11 @@ https://www.atlassian.com/git/glossary
 
 https://www.git-tower.com/learn/git/glossary/head 
 
+https://pre-commit.com/
+
+https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-
+
+environments.html#activating-an-environment
 
 \end{verbatim}
 
