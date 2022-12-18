@@ -1,0 +1,19 @@
+name: assignment_4
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - jupyterlab
+  - python=3.10
+  - numpy
+  - scipy
+  - pre-commit
+  - pandas
+  - plotly
+  - scikit-learn
+  - pip
+  - pytest
+  - pip:
+    - kaleido
