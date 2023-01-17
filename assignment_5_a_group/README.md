@@ -22,6 +22,16 @@ Now you can build the project using
 
     $ pytask
 
+If your pytask cannot find module assignment_5_a_group, change your directory name from _assignment-5-a-group_ to *assignment_5_a_group*.
+
+Or you can run 
+
+    $ pip install - e .
+
+before you run 
+
+    $pytask
+
 ## Credits
 
 This project was created with [cookiecutter](https://github.com/audreyr/cookiecutter)
