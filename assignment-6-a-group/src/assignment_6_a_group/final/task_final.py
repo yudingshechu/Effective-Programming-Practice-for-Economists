@@ -9,7 +9,6 @@ kwargs = {"produces": BLD / "python" / "figures" / "model_figures.png"}
 
 @pytask.mark.depends_on(
     {
-        "data_info": SRC / "data_management" / "data_info.yaml",
         "stats": BLD / "python" / "models" / "stats.csv",
     }
 )

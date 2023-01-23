@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 from patsy import dmatrices
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import precision_score
@@ -10,16 +9,17 @@ from sklearn.metrics import recall_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+
 def calculate_diagnostics(model, x_test, y_test):
     """model validation.
 
     Args:
-        model (_type_): _description_
-        x_test (_type_): _description_
-        y_test (_type_): _description_
+        model : logit regression models
+        x_test : test data x
+        y_test : test data y
 
     Returns:
-        _type_: _description_
+        out: dictionary which contains classification metrics
 
     """
     pred = model.predict(x_test)
@@ -34,6 +34,17 @@ def calculate_diagnostics(model, x_test, y_test):
 
 
 def model_building_up(data):
+    """Build logistic regression models.
+
+    Args:
+        data : raw data
+
+    Returns:
+        models: logistic regression models
+        x_test_scaled: standardized testing data x
+        y_test: response variable y for testing
+
+    """
     formula = "smoke~gender+marital_status+highest_qualification+gross_income+ethnicity+nationality+region+age"
     formula = "+".join([formula] + [f"I(age**{i})" for i in range(2, 11)])
     y, x = dmatrices(formula, data=data, return_type="dataframe")
@@ -43,9 +54,11 @@ def model_building_up(data):
     scaler = StandardScaler().fit(x_train)
     x_train_scaled = pd.DataFrame(scaler.transform(x_train), columns=x.columns)
     x_test_scaled = pd.DataFrame(scaler.transform(x_test), columns=x.columns)
-    penalties=list(np.linspace(0.001,5,num=100))
-    models={
-        p:LogisticRegression(fit_intercept=False,penalty="l2",C=1/p,max_iter=2000).fit(x_train_scaled,y_train)
-    for p in penalties
+    penalties = list(np.linspace(0.001, 5, num=100))
+    models = {
+        p: LogisticRegression(
+            fit_intercept=False, penalty="l2", C=1 / p, max_iter=2000
+        ).fit(x_train_scaled, y_train)
+        for p in penalties
     }
     return models, x_test_scaled, y_test
